@@ -3,8 +3,6 @@
 
 FROM python:3.6-alpine
 
-LABEL  maintainer tsgkdt <tsgkadot@gmail.com>
-
 COPY requirements.txt .
 
 RUN apk --no-cache add openjdk8-jre graphviz jpeg-dev zlib-dev ttf-dejavu freetype-dev git && \
