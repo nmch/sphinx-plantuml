@@ -28,7 +28,7 @@ RUN \
     rm -f TakaoFonts_00303.01.tar.xz && \
     ln -s /usr/share/fonts/TakaoFonts_00303.01 /usr/share/fonts/TakaoFonts && \
     echo "#Upgrade pip" && \
-    pip install --upgrade pip && \
+    pip install --upgrade pip awscli && \
     echo "#Install Sphinx with Nice Theme&Extention" && \
     pip install -U -r requirements.txt && \
     echo "# for Build Infomation" && \
