@@ -35,4 +35,7 @@ RUN \
     pip freeze && \ 
     apk del dependencies
 
+# for sphinx-autobuild
+EXPOSE 8000
+
 CMD ["python3"]
