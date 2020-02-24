@@ -6,6 +6,7 @@ FROM python:3.6-alpine
 COPY requirements.txt .
 
 RUN apk --no-cache add openjdk8-jre graphviz jpeg-dev zlib-dev ttf-dejavu freetype-dev git && \
+	apk --no-cache add npm && \
     apk --no-cache --virtual=dependencies add build-base python-dev py-pip wget
 
 ENV LIBRARY_PATH=/lib:/usr/lib
@@ -32,10 +33,13 @@ RUN \
     echo "#Install Sphinx with Nice Theme&Extention" && \
     pip install -U -r requirements.txt && \
     echo "# for Build Infomation" && \
-    pip freeze && \ 
+    pip freeze && \
+    npm install -g --no-progress aglio --unsafe-perm && \
     apk del dependencies
 
 # for sphinx-autobuild
 EXPOSE 8000
+# for aglio
+EXPOSE 3000
 
 CMD ["python3"]
