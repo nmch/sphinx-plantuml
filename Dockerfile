@@ -5,7 +5,7 @@ FROM python:3.6-alpine
 
 COPY requirements.txt .
 
-RUN apk --no-cache add openjdk8-jre graphviz jpeg-dev zlib-dev ttf-dejavu freetype-dev git && \
+RUN apk --no-cache add openjdk8-jre graphviz jpeg-dev zlib-dev ttf-dejavu freetype-dev git go && \
 	apk --no-cache add npm && \
     apk --no-cache --virtual=dependencies add build-base python-dev py-pip wget
 
@@ -35,6 +35,8 @@ RUN \
     echo "# for Build Infomation" && \
     pip freeze && \
     npm install -g --no-progress aglio --unsafe-perm && \
+    go get -u github.com/achiku/planter && \
+    mv /root/go/bin/planter /usr/local/bin && \
     apk del dependencies
 
 # for sphinx-autobuild
